@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Code learning | home html css js </title>
+        <link href="https://fonts.googleapis.com/css2?family=syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700&display=swap" 
+        rel="stylesheet"> 
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <!--===================WELCOME SCREEN=================-->
+        <div id="welcome" class="screen active">
+            <div class="logo-badge">💻</div>
+            <h1 class="app-title">CodeStart</h1>
+            <p class="tagline">Apprends HTML, CSS, & JavaScript<br>facilement - même sans expériance ! </p>
+       
+
+            <div class="lang-pills">
+                <div class="pill html">&lt;HTML&gt;</div>
+                <div class="pill css">css  ✦</div>
+                <div class="pill js">js  ()</div> 
+            </div>
+
+            <button id="btn-primary" onclick="gohome()">🚀 commencer gratuitement</button>
+            <button id="btn-secondary" onclick="gohome()">👑 Débloquer Pro — 3.2$</button>
+        </div>
+
+            <!--===================main app header (visible sur home/profil)=================-->
+            <header id="app-header" class="header" style="display:none;">
+                <div class="header-logo">💻 CodeStart</div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <div class="xp-badge">⚡<span id="ix-count">0</span>XP</div>
+                    <div class="pro-badge"> onclick="showPaywall()" id="pro-btn">👑 Pro</div> 
+                    </div>
+                </div>
+
+
+
+            <!--=========== home screen ===========-->
+           <div id="home" class="screen">
+             <div class="welcome-banner">
+                <h2>👋 Bonjour, débutant !</h2>
+                 <p>Continue ta progression — tu es à 15% du niveau 1</p>
+                 <div class="progress-bar-wrap">
+                    <div class="progress-bar" id="main-progress"></div>
+                 </div>
+             </div>
+
+               <div class="section-title">🧑‍💻 HTML - La structure</div>
+               <div class="lesson-grid">
+                <div class="lesson-card html" onclick="startLesson('html1')">
+                    <div class="lesson-icon html">🏗️</div>
+                    <div class="lesson-info"> 
+                       <div class="lesson-title">Leçon 1: Les bases de HTML</div>
+                       <div class="lesson-sub">les bases . 3 étapes</div> 
+                    </div>
+
+                    <div class="lesson-status">▶️ </div>
+                    </div>
+
+                    <div class="lesson-card html" onclick="startLesson('html2')">
+                        <div class="lesson-icon html">🏷️</div>
+                        <div class="lesson-info"> 
+                           <div class="lesson-title">Les balises &lt;h1&gt; et &lt;p&gt;</div>
+                           <div class="lesson-sub"> Titre et paragraphe . 3 étapes</div>
+                           </div>
+                           <div class="lesson-status">▶️</div>
+                    </div>
+                    <div class="lesson-card html locked" onclick="checkLock()">
+                        <div class="lesson-icon locked">🔗</div>
+                    <div class="lesson-info">
+                        <div class="lesson-title">Les liens et images</div>
+                        <div class="lesson-sub">Navigattion . 4 étapes</div>
+                    </div>
+                    <div class="lesson-status">🔒</div>
+                    </div>
+                    </div>
+
+            <div class="section-title">🔵 CSS – Le design</div>
+            <div class="lesson-grid">
+                <div class="lesson-card css" onclick="startLesson('css')">
+                    <div class="lesson-icon css">🎨</div>
+                    <div class="lesson-info">
+                      <div class="lesson-title">Couleur & texte</div>  
+                        <div class="lesson-sub">Styliser . 3 étapes </div>
+                </div>
+
+                <div class="lesson-status">▶️</div> 
+                </div> 
+                <div class="lesson-card css locked" onclik="checkLock()">
+                    <div class="lesson-icon locked">📦</div> 
+                    <div class="lock-tag">PRO</div>
+                    <div class="lesson-info">
+                        <div class="lesson-title">Marges et espacement</div> 
+                        <div class="lesson-sub">Mise en page . 4 étapes</div>
+                    </div>
+                    <div class="lesson-status">🔒</div>
+                </div> 
+                </div>
+
+                <div class="section-title">🟡 JavaScript – L'action</div>
+                <div class="lesson-grid">
+                    <div class="lesson-card js locked" onclick="startLesson('js')">
+                        <div class="lesson-icon js">⚙️</div>
+                        <div class="lesson-info">
+                           <div class="lesson-title">C'est quoi JS ?</div>
+                           <div class="lesson-sub">Introduction · 3 étapes</div> 
+                         </div>
+      <div class="lesson-status">▶️</div>
+    </div>
+    <div class="lesson-card js locked" onclick="checkLock()">
+      <div class="lesson-icon locked">📝</div>
+      <div class="lock-tag">PRO</div>
+      <div class="lesson-info">
+        <div class="lesson-title">Les variables</div>
+        <div class="lesson-sub">Données · 3 étapes</div>
+      </div>
+      <div class="lesson-status">🔒</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--================== Lesson screen ====================-->
+<div id="lesson" class="screen">
+    <div class="lesson" class="screen">
+        <div style="padding: 16px 20px; background: var(--surface); border-bottom: 1px solid
+        var(--border);">
+        <button class="back-btn" onclick="gohome()">← Retour</button>
+        <h2 id="lesson-title" style="font-family:'syne',sans-sefif; font-size:20px; font-weight:800;"></h2>
+        <div class="step-indicator" id="step-dots"></div>
+    </div>
+    <div class="lesson-body" id="lesson-body"></div>
+    </div>
+
+    <!--==================profile screen ====================-->
+    <div id="profile" class="screen">
+        <div class="profile-header">
+            <div class="avatar">🧑‍💻</div>
+             <h2>Mon Profile</h2>
+            <p>Débutant enthousiaste🔥! </p>
+        </div>
+     
+
+        <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-xp">0</div>
+      <div class="stat-label">Points XP</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-lessons">0</div>
+      <div class="stat-label">Leçons finies</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">🔥 1</div>
+      <div class="stat-label">Jours de suite</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">HTML</div>
+      <div class="stat-label">En cours</div>
+    </div>
+  </div>
+ 
+  <div class="section-title" style="padding:0; margin-bottom:12px;">🏆 Succès</div>
+  <div class="achievement-list">
+    <div class="achievement">
+      <div class="badge">🚀</div>
+      <div class="info">
+        <div class="name">Premier pas</div>
+        <div class="desc">Ouvrir l'application</div>
+      </div>
+    </div>
+    <div class="achievement">
+      <div class="badge">📖</div>
+      <div class="info">
+        <div class="name">Apprenant</div>
+        <div class="desc">Finir une leçon complète</div>
+      </div>
+    </div>
+    <div class="achievement" style="opacity:0.4;">
+      <div class="badge">⚡</div>
+      <div class="info">
+        <div class="name">Rapide comme l'éclair</div>
+        <div class="desc">Finir 5 leçons — pas encore débloqué</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== PAYWALL ==================== -->
+<div id="paywall" class="screen">
+  <div class="paywall-icon">👑</div>
+  <h2>Débloque tout !</h2>
+  <p>Pour seulement <strong style="color:var(--gold);">3.2$</strong>, accède à la totalité des leçons HTML, CSS et JavaScript.</p>
+ 
+  <div class="price-card">
+    <div class="price-tag"><span>$</span>3.2</div>
+    <div class="price-sub">Paiement unique • Pas d'abonnement</div>
+    <div class="feature-list">
+      <div class="feature-item">Toutes les leçons débloquées</div>
+      <div class="feature-item">Quiz interactifs illimités</div>
+      <div class="feature-item">Éditeur de code intégré</div>
+      <div class="feature-item">Certificat de fin de cours</div>
+      <div class="feature-item">Mises à jour gratuites à vie</div>
+      <div class="feature-item">Sans connexion internet</div>
+    </div>
+    <button class="pay-btn" onclick="simulatePurchase()">✨ Acheter maintenant — 3.2$</button>
+  </div>
+ 
+  <button class="btn-secondary" style="max-width:320px;" onclick="goHome()">← Retour aux leçons gratuites</button>
+</div>
+ 
+<!-- ==================== BOTTOM NAV ==================== -->
+<div class="bottom-nav" id="bottom-nav" style="display:none;">
+  <button class="nav-btn active" id="nav-home" onclick="goHome()">
+    <span class="icon">🏠</span>Accueil
+  </button>
+  <button class="nav-btn" id="nav-profile" onclick="goProfile()">
+    <span class="icon">👤</span>Profil
+  </button>
+</div>
+
+
+    </body> 
+</html>
